@@ -368,46 +368,73 @@ var jsPsychTextureBarChoice = (function (jspsych) {
       // --- Create CURRENT trial + NEXT trial diaplay ---
 
       let html = `
+  <div style="
+      background:${trial.bg_color};
+      width:100%;
+      height:100%;
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      text-align:center;
+      box-sizing:border-box;
+    ">
+
+    <!-- INSTRUCTIONS -->
+
+    <div style="
+      width:100%;
+      padding:20px 30px 10px 30px;
+      box-sizing:border-box;
+      font-size:22px;
+      line-height:1.4;
+      flex-shrink:0;
+    ">
+      Please put your finger on the start dot. You may now feel the textures.
+      <br>
+      <span style="font-size:18px;">
+        [Experimenter: provide the target concept after they have touched both textures]
+      </span>
+    </div>
+
+    <!-- CURRENT + NEXT TRIALS -->
+
+    <div style="
+      flex:1;
+      width:100%;
+      min-height:0;
+      display:flex;
+      flex-direction:row;
+      box-sizing:border-box;
+    ">
+
+      <!-- CURRENT TRIAL -->
+
+      ${createTrialDisplay(
+        {
+          prompt: trial.prompt,
+          final_left: trial.left_height,
+          final_right: trial.right_height,
+          left_texture: trial.left_texture,
+          right_texture: trial.right_texture,
+        },
+        "CURRENT TRIAL",
+        trial.bg_color,
+      )}
+
+      <!-- Divider -->
       <div style="
-          background:${trial.bg_color};
-          width:100%;
-          height:100%;
-          min-height:100vh;
-          display:flex;
-          flex-direction:row;
-          text-align:center;
-          box-sizing:border-box;
-        ">
+        width:3px;
+        background:black;
+        margin:20px 0;
+        flex-shrink:0;
+      "></div>
 
-          <!-- CURRENT TRIAL -->
+      <!-- NEXT TRIAL -->
+      ${createTrialDisplay(trial.next_trial, "NEXT TRIAL", trial.bg_color)}
 
-          ${createTrialDisplay(
-            {
-              prompt: trial.prompt,
-              final_left: trial.left_height,
-              final_right: trial.right_height,
-              left_texture: trial.left_texture,
-              right_texture: trial.right_texture,
-            },
-            "CURRENT TRIAL",
-            trial.bg_color,
-          )}
-
-          <!-- Divider -->
-
-          <div style="
-            width:3px;
-            background:black;
-            margin:20px 0;
-            flex-shrink:0;
-          "></div>
-
-          <!-- NEXT TRIAL -->
-
-          ${createTrialDisplay(trial.next_trial, "NEXT TRIAL", trial.bg_color)}
-
-        </div>
-      `;
+    </div>
+  </div>
+`;
 
       display_element.innerHTML = html;
 

@@ -167,7 +167,7 @@
                 <p>[Experimenter: Confirm the participants can hear the noise.]</p>
                 <p>I will now say each concept word to confirm you can still hear the words through the noise. Please repeat each word after I say it: <b>${concept_list[0]}</b> and <b>${concept_list[1]}</b></p>
                 <p>The experiment will take about 40 minutes, and there will be 4 blocks of trials. You will be notified when you have completed each block and you may take breaks when you need to. Do you have any questions?</p>
-                <p>Great! Now we are eready to start the trials. Remember the concepts are <b>${concept_list[0]}</b> and <b>${concept_list[1]}</b>.
+                <p>Great! Now we are ready to start the trials. Remember the concepts are <b>${concept_list[0]}</b> and <b>${concept_list[1]}</b>.
                 <p>[Experimenter: Press 'Continue' when you are ready to begin.]<br></p> 
                 </div>
                 `,
@@ -333,7 +333,8 @@
                     type: jsPsychHtmlButtonResponse,
                     stimulus: `
                 <p>You have completed block ${i + 1} of ${totalBlocks}.</p>
-                <p>Take a short break if needed, then click below to continue.</p>
+                <p>Take a short break if needed. If you would like a break from the headphoens you may take them off during this break.</p>
+                <p>[Experimenter: When you are ready to begin have the participant put the headphones back on and check they can hear the noise. Click continue to start the trials again]</p>
             `,
                     choices: ['Continue']
                 });
